@@ -115,25 +115,3 @@ end)
 RegisterNetEvent("rlanta-baron:client:gorev3", function()
     TriggerServerEvent("rlanta-baron:server:gorev3")
 end)
-
-RegisterNetEvent('rlanta-addiction:client:medicine', function()
-    local player = PlayerPedId() 
-    QBCore.Functions.Progressbar('drink_medicine', "You are using medicine...", 5000, false, true, {
-        disableMovement = false,
-        disableCarMovement = false,
-        disableMouse = false,
-        disableCombat = true
-    }, {
-        animDict = 'mp_player_intdrink',
-        anim = 'loop_bottle',
-        flags = 49
-    }, {
-        model = 'vw_prop_casino_water_bottle_01a',
-        bone = 60309,
-        coords = vec3(0.0, 0.0, -0.05),
-        rotation = vec3(0.0, 0.0, -40),
-    }, {}, function() -- Done
-        TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items["water_bottle"], 'remove')
-        TriggerServerEvent("rlanta-addiction:server:remove-addiction")
-    end)
-end)
